@@ -15,8 +15,8 @@ google.load('visualization', '1', {
 var visualization;
 
 function drawVisualization() {
-    var query = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1y8QRGUT0bb0Wx6lAHbMjNxU7Zs96WDJE9SXRiuQQfJc&output=html&usp=sharing');
-    query.setQuery('SELECT A, B, C, D label A "Duration", B "Song", C "Requested By", D "URL"');
+    var query = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1ex_r8XFU8VKiTquIUoRww_xeUieDHJyyc7n7D_4Tt_M&output=html&usp=sharing');
+    query.setQuery('SELECT A, B, C, D, E, F, G, H, I, J, K label A "Company Name", B "Token Created Name", C "Date When ICO Closed(Finished)", D "Token Type Raised(ETH, BTC, EOS...)", E "ETH raised", F "ETH price at ICO end", G "BTC raised", H "BTC price at ICO end", I "Other token raised USD value or token value", J "ETH value in USD at ICO end", K "BTC value in USD at ICO end"');
     query.send(handleQueryResponse);
 }
 
@@ -30,5 +30,14 @@ function handleQueryResponse(response) {
     visualization.draw(data, {
         legend: 'bottom'
     });
+    setTimeout(function(){
+        // $('#table').find('table').dataTable( {
+        //     "columnDefs": [
+        //       { "type": "num-fmt", "targets": 6 }
+        //     ]
+        //   } );
+
+        paginateTable();
+    }, 2000)
 }
 google.setOnLoadCallback(drawVisualization);
